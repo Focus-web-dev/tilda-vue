@@ -1,0 +1,246 @@
+.panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  &__left {
+    h6 {
+      font-weight: 300;
+      font-size: 18px;
+      opacity: .5;
+      color: #333;
+    }
+  }
+
+  &__right {
+    .add {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      font-weight: 300;
+
+      transition: color .3s ease-in-out;
+
+      &__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 25px;
+        height: 25px;
+        background-color: @orange;
+        border-radius: 25px;
+
+        margin-right: 5px;
+
+        img {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        color: @orange;
+      }
+
+    }
+  }
+}
+
+.projects {
+  margin: 0 auto;
+  padding-bottom: 100px;
+
+  display: grid;
+  grid-template-columns: 48% 48%;
+  gap: 30px;
+
+  &__item {
+    position: relative;
+    width: 100%;
+    height: 265px;
+
+    &_empty {
+      border: 1px dashed #d9d9d9;
+      height: 265px;
+    }
+
+    background-color: @white;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      height: 100%;
+      padding-bottom: 20px;
+
+      border: 1px solid #d9d9d9;
+
+      &__header {
+        height: calc(100% - 40px);
+        padding-top: 30px;
+        padding-left: 40px;
+        padding-right: 40px;
+
+        h2 {
+          font-size: 52px;
+          line-height: 115%;
+          font-weight: 300;
+          color: #000;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+
+          transition: color .3s ease-in-out;
+
+          @media screen and (max-width: @breakpoint-md) {
+            font-size: 36px;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          h2 {
+            color: @orange;
+          }
+        }
+      }
+
+      &__footer {
+        position: relative;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        padding-left: 40px;
+        padding-right: 40px;
+
+        .link {
+          max-width: 100%;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+
+          line-height: 115%;
+          color: @black;
+
+          &__icon {
+            width: 14px;
+            height: 14px;
+            margin-right: 5px;
+            color: @orange;
+          }
+
+          transition: color .3s ease-in-out;
+
+          &:hover,
+          &:focus {
+            color: @orange;
+          }
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -25px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: calc(100% - 80px);
+          height: 1px;
+          background-color: #e5e5e5;
+        }
+
+        @media screen and (max-width: @breakpoint-lg) {
+          flex-direction: column;
+          align-items: flex-start;
+
+          .link {
+            &:not(:last-child) {
+              margin-bottom: 12px;
+            }
+          }
+        }
+      }
+
+      .icon {
+        opacity: 0;
+        position: absolute;
+        top: 15px;
+        right: 10px;
+
+        color: #c4c4c4;
+        transition: all .3s ease-in-out;
+        cursor: pointer;
+        &:hover,
+        &:focus {
+          color: @orange;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        .icon {
+          opacity: 1;
+        }
+      }
+    }
+
+    transition: all .3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: #eee;
+    }
+  }
+
+  @media screen and (max-width: @breakpoint-md) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding-bottom: 40px;
+
+    &__item {
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+
+      &_empty {
+        display: none;
+      }
+
+      .content .content__header {
+        h2 {
+          font-size: 52px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: @breakpoint-sm) {
+    &__item {
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
+
+      height: 215px;
+      &_empty {
+        height: 215px;
+      }
+
+      .content .content__header {
+        h2 {
+          font-size: 36px;
+        }
+      }
+    }
+  }
+}

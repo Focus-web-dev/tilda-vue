@@ -1,0 +1,267 @@
+.header {
+  position: relative;
+
+  width: 100%;
+  height: 60px;
+  background: @black;
+
+  .waves-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 100%;
+    color: @white;
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 642px) {
+    .waves-icon {
+      display: none;
+    }
+  }
+}
+
+.left-items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-right: 20px;
+
+    .icon {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  @media screen and (max-width: @breakpoint-md) {
+    overflow: auto;
+    padding-right: 25px;
+
+    .nav {
+      overflow: auto;
+    }
+  }
+}
+
+.right-items {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  &__item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    height: 60px;
+
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+
+    a {
+      white-space: nowrap;
+    }
+
+    .router-link-active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: @orange;
+    }
+  }
+}
+
+
+// HEADER INVERSION
+
+.header_inversion {
+  background: @white;
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+
+  .waves-icon {
+    color: @black;
+  }
+
+  @media screen and (max-width: @breakpoint-lg) {
+    height: unset;
+    padding: 15px 0;
+
+    .waves-icon {
+      display: none;
+    }
+
+    .wrapper {
+      flex-direction: column;
+    }
+
+    .left-items,
+    .right-items {
+      justify-content: center;
+    }
+
+    .left-items {
+      overflow: unset;
+
+      &__pages-list {
+        display: none;
+      }
+    }
+  }
+
+  .left-items {
+    &__breadcrumbs {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .breadcrumb:not(:last-child) { margin-right: 10px; }
+
+      .link {
+        text-transform: uppercase;
+        color: @black;
+        font-size: 12px;
+        white-space: nowrap;
+
+        &__icon {
+          margin-right: 10px;
+        }
+
+        &:hover,
+        &:focus {
+          color: @orange;
+        }
+      }
+    }
+
+    &__pages-list {
+      position: relative;
+
+      .options_pages {
+        top: 100%;
+      }
+
+      .pages-list-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 40px;
+        height: 100%;
+        margin-left: 20px;
+        background: none;
+
+        transition: transform .3s ease-in-out;
+
+        .icon {
+          width: 24px;
+          height: 24px;
+
+          color: @black;
+          transition: color .3s ease-in-out;
+        }
+
+        &:hover {
+          .icon {
+            color: @orange
+          }
+        }
+      }
+
+      .pages-list-button_opened {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .right-items {
+    .nav-list {
+      &__item {
+        .link {
+          color: @black;
+          background: none;
+
+          &:hover,
+          &:focus {
+            color: @orange;
+          }
+        }
+
+        .link_disabled {
+          pointer-events: none;
+          opacity: .3;
+        }
+
+        .link_action {
+          font-weight: 900;
+        }
+      }
+
+      &__item-options {
+        .options_pages {
+          top: 100%;
+          right: 100%;
+          left: unset;
+
+          .options-list {
+            margin-top: 0;
+          }
+        }
+      }
+
+      .nav-list-item-button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: none;
+
+        font-size: 16px;
+        transition: all .3s ease-in-out;
+
+        .icon {
+          width: 20px;
+          height: 20px;
+          margin-left: 5px;
+          transition: transfrom .3s ease-in-out;
+        }
+
+        .icon_active {
+          transform: rotate(180deg);
+        }
+
+        &:hover,
+        &:focus {
+          color: @orange;
+
+          .icon {
+            color: @orange;
+          }
+        }
+      }
+
+      @media screen and (max-width: @breakpoint-md) {
+        overflow: auto;
+      }
+    }
+  }
+}
